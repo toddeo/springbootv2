@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=tadde
+      - POSTGRES_USER=tadde
+      - POSTGRES_PASSWORD=tadde_pass
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  spring-api:
+    build: ./
+    depends_on:
+       - db
+    restart: always
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=tadde
+      - DB_PASS=tadde_pass
+      - DB_NAME=tadde
+      - WAIT_HOSTS=postgres:5432
+      - WAIT_HOSTS_TIMEOUT=180
+    links:
+      - db:postgres
+    ports:
+      - "9090:9090"
+    volumes:
+      - "${HOME}/.m2:/root/.m2"
