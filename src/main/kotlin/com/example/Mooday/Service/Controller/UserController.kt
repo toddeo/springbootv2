@@ -1,18 +1,17 @@
-package com.example.Mooday.Service.Controller
+package com.example.mooday.service.controller
 
-import com.example.Mooday.Adult
-import com.example.Mooday.Service.AdultService
+import com.example.mooday.service.UserService
+import com.example.mooday.User
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("api/v1")
-class AdultController(val adultService: AdultService) {
+class UserController(val userService: UserService) {
 
     @GetMapping( "/moodays")
-    fun getAdult(): List<Adult> {
-        return adultService.getAllAdult()
+    fun getFamily(): List<User> {
+        return userService.getAllUsers()
     }
-
 }
