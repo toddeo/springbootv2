@@ -1,6 +1,5 @@
 package com.example.mooday
 
-import com.example.mooday.utils.enums.UserTypeEnum
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -13,5 +12,6 @@ data class User(
     val idUser: Long,
     val firstNameUser: String,
     val lastNameUser: String,
-    val typeUser: UserTypeEnum,
+    val typeUser: String,
+    val idFamily: Long,
 )
