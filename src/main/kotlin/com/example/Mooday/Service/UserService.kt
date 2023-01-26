@@ -14,4 +14,8 @@ class UserService(val userRepository: UserRepository) {
     fun getUserById(id: Long): Optional<User> {
         return userRepository.findById(id)
     }
+
+    fun getUserByFirstName(name: String): Optional<User> {
+        return userRepository.findByFirstNameUser(name)
+    }
 }

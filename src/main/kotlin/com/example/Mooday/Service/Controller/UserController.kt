@@ -21,4 +21,9 @@ class UserController(val userService: UserService) {
     fun getUserById(@PathVariable(value = "userId") id: Long): Optional<User> {
         return userService.getUserById(id)
     }
+
+    @GetMapping("/user/{userFirstName}")
+    fun getUserByFirstName(@PathVariable(value = "userFirstName") name: String): Optional<User> {
+        return userService.getUserByFirstName(name)
+    }
 }

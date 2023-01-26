@@ -4,6 +4,7 @@ import com.example.mooday.Family
 import com.example.mooday.repository.FamilyRepository
 import org.springframework.stereotype.Service
 import java.util.*
+import javax.swing.text.html.Option
 
 @Service
 class FamilyService(val familyRepository: FamilyRepository) {
@@ -14,5 +15,9 @@ class FamilyService(val familyRepository: FamilyRepository) {
 
     fun getFamilyById(id: Long): Optional<Family> {
         return familyRepository.findById(id)
+    }
+
+    fun getFamilyByName(name: String): Optional<Family> {
+        return familyRepository.findByNameFamily(name)
     }
 }
