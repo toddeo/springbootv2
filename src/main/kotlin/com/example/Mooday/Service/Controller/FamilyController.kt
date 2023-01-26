@@ -20,7 +20,7 @@ class FamilyController(val familyService: FamilyService) {
     }
 
     @GetMapping("/family/{familyName}")
-    fun getFamilyById(@PathVariable(value = "familyName") name: String): Optional<Family> {
+    fun getFamilyByName(@PathVariable(value = "familyName") name: String): Optional<Family> {
         return familyService.getFamilyByName(name)
     }
 }
